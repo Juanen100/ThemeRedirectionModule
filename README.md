@@ -1,6 +1,6 @@
 [![CI-Release](https://github.com/wiiu-env/ContentRedirectionModule/actions/workflows/ci.yml/badge.svg)](https://github.com/wiiu-env/ContentRedirectionModule/actions/workflows/ci.yml)
 
-**Made for use on StyleMiiU and it's option to just not add any subfolders if you don't want to when creating the file structure.**
+**Made for use on StyleMiiU and its option to just not add any subfolders if you don't want to when creating the file structure.**
 
 ## Usage
 (`[ENVIRONMENT]` is a placeholder for the actual environment name.)
