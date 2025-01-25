@@ -19,7 +19,7 @@ WUT_ROOT := $(DEVKITPRO)/wut
 # DATA is a list of directories containing data files
 # INCLUDES is a list of directories containing header files
 #-------------------------------------------------------------------------------
-TARGET		:=	ContentRedirectionModule
+TARGET		:=	ThemeRedirectionModule
 BUILD		:=	build
 SOURCES		:=	src \
                 src/utils

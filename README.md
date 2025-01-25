@@ -1,11 +1,13 @@
 [![CI-Release](https://github.com/wiiu-env/ContentRedirectionModule/actions/workflows/ci.yml/badge.svg)](https://github.com/wiiu-env/ContentRedirectionModule/actions/workflows/ci.yml)
 
+**Made for use on StyleMiiU and it's option to just not add any subfolders if you don't want to when creating the file structure.**
+
 ## Usage
 (`[ENVIRONMENT]` is a placeholder for the actual environment name.)
 
-1. Copy the file `ContentRedirectionModule.wms` into `sd:/wiiu/environments/[ENVIRONMENT]/modules`.  
+1. Copy the file `ThemeRedirectionModule.wms` into `sd:/wiiu/environments/[ENVIRONMENT]/modules`.  
 2. Requires the [WUMSLoader](https://github.com/wiiu-env/WUMSLoader) in `sd:/wiiu/environments/[ENVIRONMENT]/modules/setup`.
-3. Use [libcontentredirection](https://github.com/wiiu-env/libcontentredirection).
+3. Use [libthemeredirection](https://github.com/Juanen100/libthemeredirection).
 
 ## Buildflags
 

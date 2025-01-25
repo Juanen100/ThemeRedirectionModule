@@ -6,7 +6,7 @@
 #include "utils/StringTools.h"
 #include "utils/logger.h"
 #include "utils/utils.h"
-#include <content_redirection/redirection.h>
+#include <theme_redirection/redirection.h>
 #include <coreinit/dynload.h>
 #include <mutex>
 #include <nn/act.h>
@@ -90,7 +90,7 @@ end:
     return result;
 }
 
-ContentRedirectionApiErrorType CRAddFSLayer(CRLayerHandle *handle, const char *layerName, const char *replacementDir, FSLayerType layerType) {
+ContentRedirectionApiErrorType CRAddFSLayer(CRLayerHandle *handle, const char *layerName, const char *replacementDir, FSLayerType layerType, const char* subfolder) {
     if (!handle || layerName == nullptr || replacementDir == nullptr) {
         DEBUG_FUNCTION_LINE_WARN("CONTENT_REDIRECTION_API_ERROR_INVALID_ARG");
         return CONTENT_REDIRECTION_API_ERROR_INVALID_ARG;
@@ -101,7 +101,7 @@ ContentRedirectionApiErrorType CRAddFSLayer(CRLayerHandle *handle, const char *l
         ptr = make_unique_nothrow<FSWrapper>(layerName, "/vol/content", replacementDir, false, false);
     } else if (layerType == FS_LAYER_TYPE_CONTENT_MERGE) {
         DEBUG_FUNCTION_LINE_INFO("Redirecting \"/vol/content\" to \"%s\", mode: \"merge\"", replacementDir);
-        ptr = make_unique_nothrow<FSWrapperMergeDirsWithParent>(layerName, "/vol/content", replacementDir, true);
+        ptr = make_unique_nothrow<FSWrapperMergeDirsWithParent>(layerName, subfolder, replacementDir, true);
     } else if (layerType == FS_LAYER_TYPE_AOC_MERGE || layerType == FS_LAYER_TYPE_AOC_REPLACE) {
         std::string targetPath;
         if (!getAOCPath(targetPath)) {
