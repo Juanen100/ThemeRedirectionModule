@@ -6,7 +6,7 @@
 #include "version.h"
 #include <wums.h>
 
-WUMS_MODULE_EXPORT_NAME("homebrew_content_redirection");
+WUMS_MODULE_EXPORT_NAME("homebrew_theme_redirection");
 WUMS_USE_WUT_DEVOPTAB();
 WUMS_DEPENDS_ON(homebrew_functionpatcher);
 
@@ -26,32 +26,32 @@ WUMS_INITIALIZE() {
     initLogging();
     DEBUG_FUNCTION_LINE("Patch functions");
     if (FunctionPatcher_InitLibrary() != FUNCTION_PATCHER_RESULT_SUCCESS) {
-        OSFatal("homebrew_content_redirection: FunctionPatcher_InitLibrary failed");
+        OSFatal("homebrew_theme_redirection: FunctionPatcher_InitLibrary failed");
     }
 
     bool wasPatched;
     for (uint32_t i = 0; i < fs_file_function_replacements_size; i++) {
         wasPatched = false;
         if (FunctionPatcher_AddFunctionPatch(&fs_file_function_replacements[i], nullptr, &wasPatched) != FUNCTION_PATCHER_RESULT_SUCCESS || !wasPatched) {
-            OSFatal("homebrew_content_redirection: Failed to patch function");
+            OSFatal("homebrew_theme_redirection: Failed to patch function");
         }
     }
     for (uint32_t i = 0; i < fsa_file_function_replacements_size; i++) {
         wasPatched = false;
         if (FunctionPatcher_AddFunctionPatch(&fsa_file_function_replacements[i], nullptr, &wasPatched) != FUNCTION_PATCHER_RESULT_SUCCESS || !wasPatched) {
-            OSFatal("homebrew_content_redirection: Failed to patch function");
+            OSFatal("homebrew_theme_redirection: Failed to patch function");
         }
     }
     wasPatched = false;
     if (FunctionPatcher_AddFunctionPatch(&OSCancelThreadReplacement, nullptr, &wasPatched) != FUNCTION_PATCHER_RESULT_SUCCESS || !wasPatched) {
-        OSFatal("homebrew_content_redirection: Failed to patch OSCancelThreadReplacement");
+        OSFatal("homebrew_theme_redirection: Failed to patch OSCancelThreadReplacement");
     }
     DEBUG_FUNCTION_LINE("Patch functions finished");
     deinitLogging();
 }
 
 WUMS_APPLICATION_STARTS() {
-    OSReport("Running ContentRedirectionModule " VERSION VERSION_EXTRA "\n");
+    OSReport("Running ThemeRedirectionModule " VERSION VERSION_EXTRA "\n");
     initLogging();
     startFSIOThreads();
 }
